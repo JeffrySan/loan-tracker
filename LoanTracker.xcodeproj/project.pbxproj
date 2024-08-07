@@ -29,6 +29,8 @@
 		7C18CE442C637C7A0029544E /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18CE432C637C7A0029544E /* Destination.swift */; };
 		7C18CE462C637E9F0029544E /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18CE452C637E9F0029544E /* PaymentViewModel.swift */; };
 		7C18CE492C6380E20029544E /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18CE482C6380E20029544E /* PaymentCell.swift */; };
+		7C18CE4B2C6382BB0029544E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18CE4A2C6382BB0029544E /* ProgressBar.swift */; };
+		7C18CE4D2C6382D60029544E /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C18CE4C2C6382D60029544E /* Progress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		7C18CE432C637C7A0029544E /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		7C18CE452C637E9F0029544E /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		7C18CE482C6380E20029544E /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		7C18CE4A2C6382BB0029544E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		7C18CE4C2C6382D60029544E /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 				7C18CE2A2C6365580029544E /* Loan+CoreDataProperties.swift */,
 				7C18CE272C6365580029544E /* Payment+CoreDataClass.swift */,
 				7C18CE282C6365580029544E /* Payment+CoreDataProperties.swift */,
+				7C18CE4C2C6382D60029544E /* Progress.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			children = (
 				7C18CE3B2C636B5F0029544E /* LoanCell.swift */,
 				7C18CE482C6380E20029544E /* PaymentCell.swift */,
+				7C18CE4A2C6382BB0029544E /* ProgressBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -348,6 +354,8 @@
 				7C18CE2C2C6365580029544E /* Payment+CoreDataProperties.swift in Sources */,
 				7C18CE3E2C63724E0029544E /* PaymentsView.swift in Sources */,
 				7C18CE442C637C7A0029544E /* Destination.swift in Sources */,
+				7C18CE4B2C6382BB0029544E /* ProgressBar.swift in Sources */,
+				7C18CE4D2C6382D60029544E /* Progress.swift in Sources */,
 				7C18CDF42C6354E10029544E /* LoanTrackerApp.swift in Sources */,
 				7C18CDF62C6354E10029544E /* Persistence.swift in Sources */,
 				7C18CE2E2C6365580029544E /* Loan+CoreDataProperties.swift in Sources */,
