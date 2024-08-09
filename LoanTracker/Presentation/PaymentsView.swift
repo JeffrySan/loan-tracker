@@ -41,11 +41,18 @@ struct PaymentsView: View {
 			// progress view
 			progressView()
 			
-			//
 			List {
-				ForEach(paymentViewModel.allPayments) { payment in
-					PaymentCell(amount: payment.amount, date: payment.wrappedDate)
+				ForEach(paymentViewModel.allPaymentObject, id: \.sectionName) { paymentObject in
+					Section(header: Text("\(paymentObject.sectionName) - \(paymentObject.sectionTotal, format: .currency(code: "IDR"))")) {
+						ForEach(paymentObject.sectionObjects) { payment in
+							PaymentCell(amount: payment.amount, date: payment.wrappedDate)
+						}
+						.onDelete { index in
+							paymentViewModel.delete(paymentObject: paymentObject, index: index)
+						}
+					}
 				}
+				
 			}
 		}
 		.navigationTitle(loan.wrappedName)

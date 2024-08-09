@@ -20,27 +20,30 @@ struct ProgressBar: View {
     var body: some View {
 		GeometryReader { geometry in
 			ZStack(alignment: .leading) {
-				ZStack(alignment: .trailing) {
-					Rectangle()
-						.frame(width: geometry.size.width, height: geometry.size.height)
-						.opacity(0.3)
-						.foregroundColor(.teal)
-					Text(progress.leftAmount, format: .currency(code: "IDR"))
-						.font(.caption)
-						.foregroundStyle(.red)
-						.padding(.horizontal, 5)
-				}
-				
-				ZStack(alignment: .trailing) {
+				ZStack(alignment: .leading) {
 					
 					Rectangle()
-						.frame(width: min(CGFloat(progress.value * geometry.size.width), geometry.size.width),
+						.frame(width: min(CGFloat(progress.value * geometry.size.width),
+										  geometry.size.width),
 							   height: geometry.size.height)
 						.foregroundColor(.blue)
 					
 					Text(progress.paidAmount, format: .currency(code: "IDR"))
 						.font(.caption)
-						.padding(.horizontal, 5)
+						.foregroundStyle(.green)
+						.padding(.horizontal)
+				}
+				
+				ZStack(alignment: .trailing) {
+					Rectangle()
+						.frame(width: geometry.size.width,
+							   height: geometry.size.height)
+						.opacity(0.3)
+						.foregroundColor(.teal)
+					Text(progress.leftAmount, format: .currency(code: "IDR"))
+						.font(.caption)
+						.foregroundStyle(.red)
+						.padding(.horizontal)
 				}
 			}
 			.cornerRadius(45.0)
