@@ -21,10 +21,25 @@ struct PaymentsView: View {
 		}
 	}
 	
+	@ViewBuilder
+	private func progressView() -> some View {
+		VStack {
+			Text("Payment Progress")
+				.font(.subheadline)
+				.foregroundStyle(.secondary)
+				.padding(.top)
+			
+			ProgressBar(progress: paymentViewModel.progress)
+				.padding(.horizontal)
+			
+			Text(paymentViewModel.expectedToFinishOn)
+		}
+	}
+	
     var body: some View {
 		VStack {
 			// progress view
-			Text("Payment Progress")
+			progressView()
 			
 			//
 			List {

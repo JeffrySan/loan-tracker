@@ -10,9 +10,11 @@ import SwiftUI
 struct ProgressBar: View {
 	
 	private let progress: Progress
+	private let barHeight: CGFloat
 	
-	init(progress: Progress) {
+	init(progress: Progress, barHeight: CGFloat = 40) {
 		self.progress = progress
+		self.barHeight = barHeight
 	}
 	
     var body: some View {
@@ -43,6 +45,7 @@ struct ProgressBar: View {
 			}
 			.cornerRadius(45.0)
 		}
+		.frame(height: barHeight)
     }
 }
 

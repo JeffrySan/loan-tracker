@@ -10,7 +10,7 @@ import SwiftUI
 final class PaymentViewModel: ObservableObject {
 	
 	@Published private(set) var expectedToFinishOn = ""
-	@Published private(set) var progress = ""
+	@Published private(set) var progress = Progress()
 	@Published private(set) var allPayments: [Payment] = []
 	@Published private(set) var allPaymentObject: [String] = []
 	
@@ -19,6 +19,23 @@ final class PaymentViewModel: ObservableObject {
 	func setLoan(loan: Loan) {
 		self.loan = loan
 		setPayments()
+		calculateProgress()
+	}
+	
+	private func calculateProgress() {
+		
+		guard let loan else {
+			return
+		}
+		
+		let allPaymentAmount: Double = allPayments.map { payment -> Double in
+			return payment.amount
+		}.reduce(0) { $0 + $1 }
+		let loanAmount = loan.amount
+		
+		progress = Progress(value: (allPaymentAmount / loanAmount),
+							leftAmount: loanAmount - allPaymentAmount,
+							paidAmount: allPaymentAmount)
 	}
 	
 	private func setPayments() {
