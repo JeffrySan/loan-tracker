@@ -12,6 +12,7 @@ struct AddPaymentView: View {
 	@StateObject var addPaymentViewModel = AddPaymentViewModel()
 	
 	var loan: Loan
+	var payment: Payment?
 	
 	@ViewBuilder
 	private func confirmButton() -> some View {
@@ -34,7 +35,7 @@ struct AddPaymentView: View {
 					   in: Date()..., 
 					   displayedComponents: .date)
 		}
-		.navigationTitle("Add Payment")
+		.navigationTitle(addPaymentViewModel.addPaymentViewTitle)
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			ToolbarItem {
@@ -43,6 +44,8 @@ struct AddPaymentView: View {
 		}
 		.onAppear {
 			addPaymentViewModel.setLoanObject(loan: loan)
+			addPaymentViewModel.setPaymentObject(payment: payment)
+			addPaymentViewModel.setupEditView()
 		}
     }
 }

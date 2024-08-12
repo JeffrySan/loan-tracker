@@ -9,5 +9,5 @@ import Foundation
 
 enum Destination: Hashable {
 	case payment(loan: Loan)
-	case addPayment(loan: Loan)
+	case addPayment(loan: Loan, payment: Payment? = nil)
 }

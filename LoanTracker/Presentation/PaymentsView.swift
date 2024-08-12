@@ -15,7 +15,7 @@ struct PaymentsView: View {
 	
 	@ViewBuilder
 	private func addButton() -> some View {
-		NavigationLink(value: Destination.addPayment(loan: loan)) {
+		NavigationLink(value: Destination.addPayment(loan: loan, payment: nil)) {
 			Image(systemName: "plus.circle")
 				.font(.title3)
 		}
@@ -45,7 +45,9 @@ struct PaymentsView: View {
 				ForEach(paymentViewModel.allPaymentObject, id: \.sectionName) { paymentObject in
 					Section(header: Text("\(paymentObject.sectionName) - \(paymentObject.sectionTotal, format: .currency(code: "IDR"))")) {
 						ForEach(paymentObject.sectionObjects) { payment in
-							PaymentCell(amount: payment.amount, date: payment.wrappedDate)
+							NavigationLink(value: Destination.addPayment(loan: loan, payment: payment)) {
+								PaymentCell(amount: payment.amount, date: payment.wrappedDate)
+							}
 						}
 						.onDelete { index in
 							paymentViewModel.delete(paymentObject: paymentObject, index: index)

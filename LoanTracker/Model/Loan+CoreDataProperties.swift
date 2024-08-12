@@ -27,8 +27,12 @@ extension Loan {
 		return name ?? "Unknown"
 	}
 	
-	public var wrappedDate: Date {
+	public var wrappedDueDate: Date {
 		return dueDate ?? Date()
+	}
+	
+	public var wrappedStartDate: Date {
+		return startDate ?? Date()
 	}
 	
 	public var paymentArray: [Payment] {

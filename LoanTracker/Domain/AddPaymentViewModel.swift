@@ -11,14 +11,37 @@ final class AddPaymentViewModel: ObservableObject {
 	@Published var amount = ""
 	@Published var date = Date()
 	
+	var addPaymentViewTitle: String {
+		return payment == nil ? "Add Payment" : "Edit Payment"
+	}
+	
+	private(set) var payment: Payment?
 	private(set) var loan: Loan?
 	
 	func setLoanObject(loan: Loan) {
 		self.loan = loan
 	}
 	
+	func setPaymentObject(payment: Payment?) {
+		self.payment = payment
+	}
+	
 	func savePayment() {
-		createNewPayment()
+		payment == nil ? createNewPayment() : updatePayment()
+	}
+	
+	func isInvalidForm() -> Bool {
+		amount.isEmpty
+	}
+	
+	func setupEditView() {
+		
+		guard let payment = payment else {
+			return
+		}
+		
+		amount = String(payment.amount)
+		date = payment.wrappedDate
 	}
 	
 	private func createNewPayment() {
@@ -33,9 +56,13 @@ final class AddPaymentViewModel: ObservableObject {
 	
 	private func updatePayment() {
 		
-	}
-	
-	func isInvalidForm() -> Bool {
-		amount.isEmpty
+		guard let payment = payment else {
+			return
+		}
+		
+		payment.amount = Double(amount) ?? 0.0
+		payment.paymentDate = date
+		
+		PersistenceController.shared.save()
 	}
 }

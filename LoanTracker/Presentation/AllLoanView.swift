@@ -33,11 +33,10 @@ struct AllLoanView: View {
 			List {
 				ForEach(loans) { loan in
 					NavigationLink(value: Destination.payment(loan: loan)) {
-						LoanCell(name: loan.wrappedName,
-								 amount: loan.amount,
-								 date: loan.wrappedDate)
+						LoanCell(name: loan.wrappedName, amount: loan.amount, date: loan.wrappedDueDate)
 					}
 				}
+				.onDelete(perform: deleteItems)
 			}
 			.navigationTitle("All Loans")
 			.toolbar {
@@ -54,10 +53,17 @@ struct AllLoanView: View {
 				case .payment(let loan):
 					PaymentsView(loan: loan)
 					
-				case .addPayment(let loan):
-					AddPaymentView(loan: loan)
+				case .addPayment(let loan, let payment):
+					AddPaymentView(loan: loan, payment: payment)
 				}
 			}
+		}
+	}
+	
+	func deleteItems(offset: IndexSet) {
+		withAnimation {
+			offset.map { loans[$0] }.forEach(viewContext.delete)
+			PersistenceController.shared.save()
 		}
 	}
 }
